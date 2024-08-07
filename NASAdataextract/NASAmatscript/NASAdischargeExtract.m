@@ -37,11 +37,6 @@ for i = 1:length(big_battery_folders)
             % 获取放电循环的索引
             discharge_cycles = find(strcmp({cycles.type}, 'discharge'));
             
-            % 对于个别数据集B0005,B0006和B0007过滤掉前20个充电循环
-            if ismember(mat_files(k).name, {'B0005.mat', 'B0006.mat', 'B0007.mat'}) && length(discharge_cycles) > 20
-                discharge_cycles = discharge_cycles(21:end);
-            end
-            
             % 过滤并提取数据
             for cycle_idx = discharge_cycles
                 cycle = cycles(cycle_idx);
